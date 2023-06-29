@@ -23,14 +23,19 @@
     // 🧠 Example of usage:
     // buildPeter() // should return { firstName: "Peter", lastName: "Pan", age: 12 }
     function buildPeter() {
-
-    }
+      let firstName = 'Peter'
+      let lastName = 'Pan'
+      let age = 12
+      return {firstName, lastName, age}
+    } buildPeter()
+    
 
     // 👉 CHALLENGE 2
     // 🧠 The function buildUser takes three arguments and uses them to build an object and return it.
     // 🧠 Example of usage:
     // buildUser("John", "Smith", 30) // should return { firstName: "John", lastName: "Smith", age: 30 }
     function buildUser(firstName, lastName, age) {
+      return {firstName, lastName, age}
 
     }
 
@@ -42,7 +47,16 @@
     // 🧠 Examples of usage:
     // deletePrice({ item: "Tesla Model 3", price: 40000 }) // should return { item: "Tesla Model 3" }
     // deletePrice({ item: "Kobo Libra 2" }) // should return { item: "Kobo Libra 2", priceless: true }
-    function deletePrice() {
+    function deletePrice(obj) {
+      if (obj.price !== undefined) {
+        delete obj.price
+      } else {
+        obj.priceless = true
+      }
+      
+      return obj
+      
+      
 
     }
 
@@ -53,6 +67,13 @@
     // evenList(['a']) // should return false
     // evenList(['a', 'b']) // should return true
     function evenList(arr) {
+      let isEven = arr.length % 2 === 0
+      let isOdd = arr.length % 2 !== 0
+      if (isEven){
+        return true
+      } else if (isOdd){
+        return false
+      }
 
     }
 
@@ -62,17 +83,25 @@
     // 🧠 Examples of usage:
     // firstOrLast(['a', 'b'], true) // should return 'a'
     // firstOrLast(['a', 'b'], false) // should return 'b'
-    function firstOrLast() {
+    function firstOrLast(arr, Boolean) {
+      if (Boolean) {
+        return arr[0]
+      } else {
+        return arr[arr.length-1]
+      }
 
     }
-
+ 
     // 👉 CHALLENGE 6
     // 🧠 The function pushElement takes an array as the first argument, and any value we wish as the second.
     // 🧠 The function adds the given value as the last element of the array, and then returns the whole array.
     // 🧠 Examples of usage:
     // pushElement([], 1) // should return [1]
     // pushElement(['a', 'b'], 'c') // should return ['a', 'b', 'c']
-    function pushElement() {
+    function pushElement(arr, val) {
+    
+      arr[arr.length] = val
+      return arr
 
     }
 
@@ -88,9 +117,11 @@
     // 🧠 At each iteration of the loop, if the current character is not "x", then add it to the end of the result array.
     // 🧠 You can merge the result array back into a string by using join. Example: ["f", "o", "o"].join("") yields "foo"
     // 🧠 Do not forget to return your rejoined string!
-    function stripX() {
+    function stripX(str) {
+      let split = str.split('x')
+     return split.join('')
 
-    }
+    } 
 
     // 👉 CHALLENGE 8
     // 🧠 The function stripChar takes a string as its first argument and a character as its second argument.
@@ -101,7 +132,11 @@
     // ❗ Important Notes:
     // 🧠 Try to solve this problem without looking at how you solved the previous one.
     // 🧠 If you need to look, do not copy & paste code. Take a peek and then work from memory!
-    function stripChar() {
+    function stripChar(str, char) {
+      let take = str.split(char)
+      return take.join('')
+      
+
 
     }
 
@@ -114,7 +149,14 @@
     // getProps({ lastName: "Smith", age: 35 }) // should return ["lastName"]
     // getProps({ firstName: "Jane", married: false }) // should return ["firstName"]
     // getProps({ name: "Bamby", favFood: "flowers" }) // should return ["name", "favFood"]
-    function getProps() {
+    function getProps(obj) {
+      let result = []
+      for(let i in obj) {
+        if (i !== 'age' && i !== 'married'){
+          result[result.length] = i
+        }
+      }
+      return result
 
     }
 
